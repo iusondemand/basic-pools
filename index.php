@@ -4,31 +4,31 @@ include("config.php");
 
 $fields = array(
 
-	"data" 									=> "date",
-	"buy/sell"								=> "text",
-	"wallet (app o exchanger)" 				=> "text",
+	"data" 						=> "date",
+	"buy/sell"					=> "text",
+	"wallet (app o exchanger)" 			=> "text",
 	"valuta (eur/dollar/crypto)"			=> "text",
-	"pagamento (carta/bonifico)" 	=> "text",
-	"exchanger" 							=> "text",
-	"commissioni exchanger" 				=> "number",
-	"fee miners"							=> "number",
-	"conversione di mercato"				=> "number",
-	"conversione applicata" 				=> "number",
-	"note utili" 							=> "textarea"
+	"pagamento (carta/bonifico)"			=> "text",
+	"exchanger" 					=> "text",
+	"commissioni exchanger" 			=> "number",
+	"fee miners"					=> "number",
+	"conversione di mercato"			=> "number",
+	"conversione applicata" 			=> "number",
+	"note utili" 					=> "textarea"
 
 );
 
 
 $fields = array(
 
-	"data" 									=> "date",
+	"data" 						=> "date",
 	"azione (buy/sell/send/receive)"		=> "radio",
-	"wallet (app/exchanger)" 				=> "radio",
+	"wallet (app/exchanger)" 			=> "radio",
 	"valuta (eur/dollar/crypto)"			=> "radio",
-	"nome carta, nome wallet o bonifico" 			=> "text",
-	"exchanger" 							=> "text",
-	"costi e commissioni"					=> "text",
-	"note utili" 							=> "textarea"
+	"nome carta, nome wallet o bonifico" 		=> "text",
+	"exchanger" 					=> "text",
+	"costi e commissioni"				=> "text",
+	"note utili" 					=> "textarea"
 
 );
 
@@ -37,17 +37,18 @@ if (mastrolindo("data") == "") {
 	$_REQUEST["data"] = date("Y-m-d");
 }
 
-$form = <<<CIAO
+$form = <<<BDY
 	<form method='post' name='pollwallet' id='pollwallet' class='pollwallet'>
 	<div class='row'>
 	
-CIAO;
+BDY;
+
 
 foreach($fields as $key => $value) {
 
 	$key				= trim($key);
 	$req_key 			= str_replace(" ", "_", $key);
-	$req_val[$req_key] 	= mastrolindo($req_key);
+	$req_val[$req_key] 		= mastrolindo($req_key);
 	
 	
 	$form.="
@@ -123,7 +124,7 @@ $form.="
 
 
 
-$style=<<<CIAO
+$style=<<<BDY
 
 <style>
 	.boxblock{padding:5px;min-height:70px;}
@@ -134,13 +135,13 @@ $style=<<<CIAO
 	label{color:#000000 !important;font-style:italic;}
 </style>
 
-CIAO;
+BDY;
 
 
 
 
 
-$bdy.=<<<CIAO
+$bdy.=<<<BDY
 
 $style
 
@@ -150,7 +151,7 @@ test
 
 $list
 
-CIAO;
+BDY;
 
 
 
